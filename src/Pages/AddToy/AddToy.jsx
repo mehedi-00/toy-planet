@@ -62,8 +62,9 @@ const AddToy = () => {
                             <select value={selectValue} onChange={handleSelect} className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
                                 <option value="">Select an option</option>
                                 <option value="Cricket">Cricket</option>
-                                <option value="Cricket">Football</option>
-                                <option value="Cricket">Badminton</option>
+                                <option value="Football">Football</option>
+                                <option value="Badminton">Badminton</option>
+                                <option value="BasketBall">BasketBall</option>
                             </select>
 
                         </div>
