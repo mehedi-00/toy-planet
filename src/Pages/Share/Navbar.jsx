@@ -29,13 +29,14 @@ const Navbar = () => {
                                 <Link>My Toys</Link>
                             </li>
                             <li>
-                                <Link> Add Toy</Link>
+                                <Link to='addToy'> Add Toy</Link>
                             </li>
-                            <li>
-                                <Link>Blogs</Link>
-                            </li>
+
                         </>
                     }
+                    <li>
+                        <Link>Blogs</Link>
+                    </li>
 
                 </ul>
 

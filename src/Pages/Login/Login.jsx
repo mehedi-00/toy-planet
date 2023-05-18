@@ -26,7 +26,7 @@ const Login = () => {
         <div className='flex mt-20 mx-20 justify-evenly items-center'>
 
             <div className='md:w-5/12 mr-10  shadow-black shadow-lg py-3 px-2'>
-                <h2 className='text-center text-2xl'>Please Lopgin</h2>
+                <h2 className='text-center text-2xl'>Please Login</h2>
                 <p className='my-3 text-red-500 ms-8'>{error} </p>
                 <div className="px-10 mt-5">
                     <form onSubmit={handleLogin}>
