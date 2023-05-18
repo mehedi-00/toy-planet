@@ -1,5 +1,6 @@
 
 import { FaGooglePlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
@@ -26,6 +27,7 @@ const Login = () => {
 
                         <button type="submit" className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
+                    <p className="my-3 text-gray-500">New to Here <Link to='/register'  className="text-indigo-600" >Register</Link></p>
                 </div>
                 <div className='text-3xl font-extrabold text-red-400  text-center my-5'>  OR</div>
                 <div className="text-center ">
