@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2'
 const AddToy = () => {
     const { user, loading } = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -10,6 +11,26 @@ const AddToy = () => {
     };
     const onSubmit = data => {
         data.usebCategory = selectValue;
+        fetch('http://localhost:5000/addtoy', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(data => {
+               
+                if(data.insertedId){
+                   return Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Your toy has been added',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                }
+            });
         console.log(data);
     };
     if (loading) {
@@ -81,7 +102,7 @@ const AddToy = () => {
                     <div className="grid my-5">
 
                         <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message</label>
-                        <textarea id="message" {...register("description")}  rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                        <textarea id="message" {...register("description")} rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
 
 
                     </div>
