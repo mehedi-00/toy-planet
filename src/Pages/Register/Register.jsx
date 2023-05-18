@@ -16,6 +16,7 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
+        setError('')
         if (password.length < 6) {
             return setError('Password Must be 6 characters ');
         }
@@ -41,7 +42,7 @@ const Register = () => {
 
             <div className='md:w-5/12 mr-10  shadow-black shadow-lg py-3 px-2'>
                 <h2 className='text-center text-2xl'>Please Register</h2>
-                <p className='my-3 text-red-500'>{error} </p>
+                <p className='my-3 text-red-500 ms-8'>{error} </p>
                 <div className="px-10 mt-5">
                     <form onSubmit={handleLogin}>
                         <div className="relative z-0 w-full mb-6 group">

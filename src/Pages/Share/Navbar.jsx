@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from '../../assets/icon/logo.png';
 import { AuthContext } from "../../Provider/AuthProvider";
 const Navbar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
 
     return (
 
@@ -23,15 +23,20 @@ const Navbar = () => {
                     <li>
                         <Link>All Toys</Link>
                     </li>
-                    <li>
-                        <Link>My Toys</Link>
-                    </li>
-                    <li>
-                        <Link> Add Toy</Link>
-                    </li>
-                    <li>
-                        <Link>Blogs</Link>
-                    </li>
+                    {
+                        user && <>
+                            <li>
+                                <Link>My Toys</Link>
+                            </li>
+                            <li>
+                                <Link> Add Toy</Link>
+                            </li>
+                            <li>
+                                <Link>Blogs</Link>
+                            </li>
+                        </>
+                    }
+
                 </ul>
 
             </div>
@@ -49,28 +54,28 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {user ?
-                <div className="dropdown dropdown-end">
-                   
+                    <div className="dropdown dropdown-end">
+
                         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
 
                                 <img src="https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg" />
                             </div>
-                        </label> 
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li>
-                            <a className="justify-between">
-                                Profile
-                                <span className="badge">New</span>
-                            </a>
-                        </li>
-                        <li><a>Settings</a></li>
-                        <li><a>Logout</a></li>
-                    </ul>
-                </div>
-                :
-                <Link to='/login'>Login</Link>
-            }
+                        </label>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <li>
+                                <a className="justify-between">
+                                    Profile
+                                    <span className="badge">New</span>
+                                </a>
+                            </li>
+                            <li><a>Settings</a></li>
+                            <li ><button onClick={logout}>Sign Out</button></li>
+                        </ul>
+                    </div>
+                    :
+                    <Link to='/login'>Login</Link>
+                }
             </div>
         </div>
     );
