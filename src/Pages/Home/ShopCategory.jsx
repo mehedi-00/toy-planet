@@ -12,7 +12,7 @@ const ShopCategory = () => {
     }, []);
 
     const handleCatagery = category=>{
-        // console.log(category);
+        console.log(category);
     }
 
     return (
