@@ -1,9 +1,11 @@
+import { FaRegWindowClose } from "react-icons/fa";
 
-const MyModal = ({ handleUpdate, modalData }) => {
+const MyModal = ({ handleUpdate, modalData,setModal ,modal}) => {
     return (
-        <div>
-            <div className=' bg-white rounded-md '>
-                <div className="card-body    ">
+        
+            <div className=' bg-white rounded-md relative'>
+                <FaRegWindowClose onClick={()=>setModal(!modal)} className="w-6 h-6 cursor-pointer text-red-800 absolute right-4 top-5"/>
+                <div className="card-body    "> 
                     <form onSubmit={handleUpdate} className='w-[450px]'>
                         <input type="hidden" name="id" readOnly value={modalData._id} />
                         <div className="flex space-x-3 mb-5">
@@ -33,7 +35,7 @@ const MyModal = ({ handleUpdate, modalData }) => {
                     </form>
                 </div>
             </div>
-        </div>
+        
     );
 };
 

@@ -4,6 +4,7 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import MyModal from './MyModal';
 import Swal from 'sweetalert2';
+
 const MyToy = () => {
     const [toys, setToys] = useState([]);
     const [isModal, setModal] = useState(false);
@@ -39,7 +40,7 @@ const MyToy = () => {
                     updated.price = price;
                     updated.quantity = quantity;
                     updateData.description = description;
-                    const newToy = [updated,...remaining]
+                    const newToy = [updated, ...remaining];
                     setToys(newToy);
                     Swal.fire({
                         position: 'top-right',
@@ -57,6 +58,39 @@ const MyToy = () => {
     const modal = (data) => {
         setModal(!isModal);
         setModalData(data);
+    };
+    const handleToyDelete = id => {
+        if (id) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/toyDelete/${id}`, {
+                        method: "DELETE"
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+                                const filterToy = toys.filter(toy => toy._id !== id);
+                                setToys(filterToy);
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Your Toy has been deleted.',
+                                    'success'
+                                );
+
+                            }
+                        });
+
+                }
+            });
+        };
     };
     return (
         <div className='md:mx-20 mx-5'>
@@ -86,7 +120,7 @@ const MyToy = () => {
                                 <td>
 
                                     <button onClick={() => modal(toy)} className='btn btn-secondary'> <FaEdit className='w-4 h-4 text-white' /> </button>
-                                    <button className=' ml-3 btn hover:bg-red-400 border-0 bg-red-400'> <FaTrashAlt className='w-4 h-4 text-white' /> </button>
+                                    <button onClick={() => handleToyDelete(toy._id)} className=' ml-3 btn hover:bg-red-400 border-0 bg-red-400'> <FaTrashAlt className='w-4 h-4 text-white' /> </button>
                                 </td>
                             </tr>
                         )}
@@ -98,7 +132,7 @@ const MyToy = () => {
 
             {/* <label htmlFor="my-modal" className="modal cursor-pointer"> */}
             <div className={isModal ? 'mymodal' : 'noModal'} htmlFor="">
-                <MyModal handleUpdate={handleUpdate} modalData={modalData} />
+                <MyModal handleUpdate={handleUpdate} modalData={modalData} setModal={setModal} modal={modal}/>
             </div>
 
 
