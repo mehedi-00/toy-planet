@@ -1,11 +1,16 @@
 
 import { useContext, useState } from "react";
 import { FaGooglePlus } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 const Login = () => {
     const [error, setError] = useState('');
     const { loginWithEmailAndPassword } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || '/';
+
+
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -16,6 +21,7 @@ const Login = () => {
             .then(res => {
                 const loggedUser = res.user;
                 console.log(loggedUser);
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.log(err.message);

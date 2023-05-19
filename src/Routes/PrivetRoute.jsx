@@ -1,11 +1,12 @@
 import  { useContext } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../Provider/AuthProvider';
+import Loader from '../Pages/Share/LOader';
 const PrivetRoute = ({ children }) => {
    const location = useLocation();
    const { user, loading } = useContext(AuthContext);
    if (loading) {
-      return <div>Lodiing</div>
+      return <Loader/>
    }
    if (user) {
       return children;

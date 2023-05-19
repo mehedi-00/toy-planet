@@ -8,6 +8,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import AddToy from "../Pages/AddToy/AddToy";
 import AllToy from "../Pages/AllToy/AllToy";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
             {path:'/',element:<Home/>},
             {path:'login',element: <Login/>},
             {path:'register',element: <Register/>},
-            {path:'addToy',element: <AddToy/>},
+            {path:'addToy',element: <PrivetRoute><AddToy/></PrivetRoute>},
             {path:'allToy',element: <AllToy/>,loader: ()=> fetch('http://localhost:5000/alltoy')},
         ]
     },
