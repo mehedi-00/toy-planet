@@ -23,9 +23,9 @@ const ShopCategory = () => {
                 </TabList>
 
                 <TabPanel >
-                    <div className="grid md:grid-cols-3 md:mt-10 md:gap-8">
+                    <div className="grid md:grid-cols-3 md:mt-10 md:gap-8 ">
                         {
-                            toys.filter(toy => toy.usebCategory === 'Cricket').map(toy =>
+                            toys.filter(toy => toy.subcategory === 'Cricket').map(toy =>
                                 <SingleToyCard key={toy._id} data={toy} />
                             )
                         }
@@ -34,7 +34,7 @@ const ShopCategory = () => {
                 <TabPanel>
                     <div className="grid md:grid-cols-3 md:mt-10 md:gap-8">
                         {
-                            toys.filter(toy => toy.usebCategory === 'Football').map(toy =>
+                            toys.filter(toy => toy.subcategory === 'Football').map(toy =>
                                 <SingleToyCard key={toy._id} data={toy} />
                             )
                         }
@@ -43,7 +43,7 @@ const ShopCategory = () => {
                 <TabPanel>
                     <div className="grid md:grid-cols-3 md:mt-10 md:gap-8">
                         {
-                            toys.filter(toy => toy.usebCategory === 'Badminton').map(toy =>
+                            toys.filter(toy => toy.subcategory === 'Badminton').map(toy =>
                                 <SingleToyCard key={toy._id} data={toy} />
                             )
                         }
@@ -52,7 +52,7 @@ const ShopCategory = () => {
                 <TabPanel>
                     <div className="grid md:grid-cols-3 md:mt-10 md:gap-8">
                         {
-                            toys.filter(toy => toy.usebCategory === 'BasketBall').map(toy =>
+                            toys.filter(toy => toy.subcategory === 'BasketBall').map(toy =>
                                 <SingleToyCard key={toy._id} data={toy} />
                             )
                         }
