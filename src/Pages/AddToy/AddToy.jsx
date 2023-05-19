@@ -22,6 +22,7 @@ const AddToy = () => {
             .then(data => {
                
                 if(data.insertedId){
+                    
                    return Swal.fire({
                         position: 'top-center',
                         icon: 'success',
