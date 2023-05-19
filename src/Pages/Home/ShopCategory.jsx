@@ -11,13 +11,17 @@ const ShopCategory = () => {
             .then(data => setToys(data));
     }, []);
 
+    const handleCatagery = category=>{
+        // console.log(category);
+    }
+
     return (
         <div className='md:mx-20 my-32'>
 
             <Tabs className='mt-20'>
                 <TabList>
-                    <Tab>Cricket</Tab>
-                    <Tab>Football</Tab>
+                    <Tab onClick={()=>handleCatagery('Cricket')}>Cricket</Tab>
+                    <Tab onClick={()=>handleCatagery('Football')}>Football</Tab>
                     <Tab>Badminton</Tab>
                     <Tab>Basketball</Tab>
                 </TabList>

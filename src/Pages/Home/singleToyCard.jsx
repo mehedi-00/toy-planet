@@ -1,4 +1,8 @@
 import { Rating } from '@smastrom/react-rating'
+import { Link } from "react-router-dom";
+
+
+
 const singleToyCard = ({ data }) => {
     console.log(data?.toy_name);
 
@@ -13,7 +17,7 @@ const singleToyCard = ({ data }) => {
                 
                 <p>price: ${data?.price}</p>
                 <div className="card-actions justify-start">
-                    <button className="btn btn-primary">Vew Details</button>
+                    <Link to={`/toy/${data._id}`} className="btn btn-primary">Vew Details</Link>
                 </div>
             </div>
         </div>
