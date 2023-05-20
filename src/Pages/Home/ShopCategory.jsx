@@ -4,64 +4,53 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import SingleToyCard from './singleToyCard';
 import 'react-tabs/style/react-tabs.css';
 const ShopCategory = () => {
+    const [activeTab, setActiveTab] = useState('Cricket');
     const [toys, setToys] = useState([]);
+    const tabData = [
+        { id: 1, title: 'Cricket', content: toys },
+        { id: 2, title: 'Football', content: toys },
+        { id: 3, title: 'Badminton', content: toys },
+        { id: 4, title: 'BasketBall', content: toys },
+    ];
     useEffect(() => {
-        fetch('http://localhost:5000/alltoy')
-            .then(res => res.json())
-            .then(data => setToys(data));
-    }, []);
-
-    const handleCatagery = category=>{
-        console.log(category);
-    }
-
+        fetchData(activeTab);
+    }, [activeTab]);
+    const fetchData = async (category) => {
+        try {
+            const response = await fetch(`http://localhost:5000/toy/${category}`);
+            const data = await response.json();
+            setToys(data);
+        } catch (error) {
+            console.error('Error fetching tab data:', error);
+        }
+    };
+    const handleCatagery = (category) => {
+        setActiveTab(category);
+    };
     return (
         <div className='md:mx-20 my-32'>
 
             <Tabs className='mt-20'>
-                <TabList>
-                    <Tab onClick={()=>handleCatagery('Cricket')}>Cricket</Tab>
-                    <Tab onClick={()=>handleCatagery('Football')}>Football</Tab>
-                    <Tab>Badminton</Tab>
-                    <Tab>Basketball</Tab>
-                </TabList>
+                <TabList >
+                    {
+                        tabData.map(tab => <Tab key={tab.id} onClick={() => handleCatagery(tab.title)} > {tab.title} </Tab>)
+                    }
 
-                <TabPanel >
+                </TabList>
+                {
+                tabData.map(tab => <TabPanel key={tab.id}>
                     <div className="grid md:grid-cols-3 md:mt-10 md:gap-8 ">
                         {
-                            toys.filter(toy => toy.subcategory === 'Cricket').map(toy =>
+                            tab.content.map(toy =>
                                 <SingleToyCard key={toy._id} data={toy} />
                             )
                         }
                     </div>
-                </TabPanel>
-                <TabPanel>
-                    <div className="grid md:grid-cols-3 md:mt-10 md:gap-8">
-                        {
-                            toys.filter(toy => toy.subcategory === 'Football').map(toy =>
-                                <SingleToyCard key={toy._id} data={toy} />
-                            )
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel>
-                    <div className="grid md:grid-cols-3 md:mt-10 md:gap-8">
-                        {
-                            toys.filter(toy => toy.subcategory === 'Badminton').map(toy =>
-                                <SingleToyCard key={toy._id} data={toy} />
-                            )
-                        }
-                    </div>
-                </TabPanel>
-                <TabPanel>
-                    <div className="grid md:grid-cols-3 md:mt-10 md:gap-8">
-                        {
-                            toys.filter(toy => toy.subcategory === 'BasketBall').map(toy =>
-                                <SingleToyCard key={toy._id} data={toy} />
-                            )
-                        }
-                    </div>
-                </TabPanel>
+                </TabPanel>)
+                }
+
+
+
             </Tabs>
         </div>
     );

@@ -2,8 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.react-tabs__tab-list{
+    @apply flex justify-center space-x-3 
+}
+.react-tabs__tab-list {
+    border: none !important;
+}
 .react-tabs__tab {
-    @apply bg-red-300
+    @apply bg-red-300 
 }
 
 .react-tabs__tab--selected {

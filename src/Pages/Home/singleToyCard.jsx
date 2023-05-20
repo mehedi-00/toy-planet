@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 
 const singleToyCard = ({ data }) => {
-    console.log(data?.toy_name);
 
     return (
         <div className="card  glass bg-gradient-to-b transition-[0.7s] pt-5 from-red-200 to-red-500 hover:bg-gradient-to-t hover:from-red-200 hover:to-red-500 ">
