@@ -1,8 +1,9 @@
 import { Rating } from '@smastrom/react-rating';
 import { useLoaderData } from 'react-router-dom';
+
 const SingleToyDetails = () => {
     const toy = useLoaderData();
-    console.log(toy);
+    
     return (
         <div className='md:mx-20 mt-20'>
             <div className="bg-gradient-to-bl from-amber-200 to-amber-500 mx-auto w-3/4 bg-base-100 shadow-xl shadow-gray-300 flex items-center py-5">

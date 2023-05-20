@@ -10,7 +10,7 @@ const MyToy = () => {
     const [isModal, setModal] = useState(false);
     const { user } = useContext(AuthContext);
     const [modalData, setModalData] = useState({});
-    const [select, setSelect] = useState('highest');
+    const [select, setSelect] = useState('');
     useEffect(() => {
         fetch(`http://localhost:5000/toys?email=${user?.email}&order=${select}`)
             .then(res => res.json())
@@ -103,7 +103,7 @@ const MyToy = () => {
             <div className=" mt-10">
                 <div className='my-5 flex justify-end'>
                     <select defaultValue={select} className="select select-info w-full max-w-xs" onChange={handlePrice}>
-
+                        <option value="">price</option>
                         <option value={'highest'}>Highest to Lowest</option>
                         <option value={'lowest'}>Lowest to Highest</option>
 

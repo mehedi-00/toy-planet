@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import SingleToyCard from './singleToyCard';
 import 'react-tabs/style/react-tabs.css';
+
 const ShopCategory = () => {
     const [activeTab, setActiveTab] = useState('Cricket');
     const [toys, setToys] = useState([]);
@@ -14,6 +15,7 @@ const ShopCategory = () => {
     ];
     useEffect(() => {
         fetchData(activeTab);
+       
     }, [activeTab]);
     const fetchData = async (category) => {
         try {
@@ -42,7 +44,7 @@ const ShopCategory = () => {
                     <div className="grid md:grid-cols-3 md:mt-10 md:gap-8 ">
                         {
                             tab.content.map(toy =>
-                                <SingleToyCard key={toy._id} data={toy} />
+                                <SingleToyCard  key={toy._id} data={toy} />
                             )
                         }
                     </div>

@@ -22,8 +22,8 @@ const router = createBrowserRouter([
             { path: 'register', element: <Register /> },
             { path: 'addToy', element: <PrivetRoute><AddToy /></PrivetRoute> },
             { path: 'allToy', element: <AllToy />, loader: () => fetch('http://localhost:5000/alltoy') },
-            { path: 'toy/:id', element: <PrivetRoute><SingleToyDetails /></PrivetRoute>, loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`) },
-            {path: '/toys', element: <PrivetRoute><MyToy/></PrivetRoute>}
+            { path: 'toy/:id', element: <PrivetRoute><SingleToyDetails /></PrivetRoute>, loader: ({ params }) => fetch(`http://localhost:5000/singletoy/${params.id}`) },
+            { path: '/toys', element: <PrivetRoute><MyToy /></PrivetRoute> }
         ]
     },
 ]);
