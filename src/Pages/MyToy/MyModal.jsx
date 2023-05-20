@@ -7,7 +7,7 @@ const MyModal = ({ handleUpdate, modalData,setModal ,modal}) => {
                 <FaRegWindowClose onClick={()=>setModal(!modal)} className="w-6 h-6 cursor-pointer text-red-800 absolute right-4 top-5"/>
                 <div className="card-body    "> 
                     <form onSubmit={handleUpdate} className='w-[450px]'>
-                        <input type="hidden" name="id" readOnly value={modalData._id} />
+                        <input type="hidden" name="id" readOnly defaultValue={modalData._id} />
                         <div className="flex space-x-3 mb-5">
                             <div className="form-control">
                                 <label className="label">

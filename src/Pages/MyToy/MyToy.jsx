@@ -10,11 +10,12 @@ const MyToy = () => {
     const [isModal, setModal] = useState(false);
     const { user } = useContext(AuthContext);
     const [modalData, setModalData] = useState({});
+    const [select, setSelect] = useState('highest');
     useEffect(() => {
-        fetch(`http://localhost:5000/toys?email=${user?.email}`)
+        fetch(`http://localhost:5000/toys?email=${user?.email}&order=${select}`)
             .then(res => res.json())
             .then(data => setToys(data));
-    }, [user]);
+    }, [user, select]);
     const handleUpdate = e => {
         setModal(false);
         e.preventDefault();
@@ -55,6 +56,9 @@ const MyToy = () => {
 
             });
     };
+    const handlePrice = e => {
+        setSelect(e.target.value);
+    };
     const modal = (data) => {
         setModal(!isModal);
         setModalData(data);
@@ -90,13 +94,21 @@ const MyToy = () => {
 
                 }
             });
-        };
+        }
+
     };
     return (
         <div className='md:mx-20 mx-5'>
 
             <div className=" mt-10">
+                <div className='my-5 flex justify-end'>
+                    <select defaultValue={select} className="select select-info w-full max-w-xs" onChange={handlePrice}>
 
+                        <option value={'highest'}>Highest to Lowest</option>
+                        <option value={'lowest'}>Lowest to Highest</option>
+
+                    </select>
+                </div>
                 <table className="table w-full">
 
                     <thead>
@@ -115,7 +127,7 @@ const MyToy = () => {
                                 <th>{++index}</th>
                                 <td><img src={toy?.toy_url} className='w-12 h-8 rounded-md' alt="" /></td>
                                 <td>{toy?.toy_name}</td>
-                                <td>{toy?.price}</td>
+                                <td> ${toy?.price}</td>
                                 <td>{toy.quantity}</td>
                                 <td>
 
@@ -132,7 +144,7 @@ const MyToy = () => {
 
             {/* <label htmlFor="my-modal" className="modal cursor-pointer"> */}
             <div className={isModal ? 'mymodal' : 'noModal'} htmlFor="">
-                <MyModal handleUpdate={handleUpdate} modalData={modalData} setModal={setModal} modal={modal}/>
+                <MyModal handleUpdate={handleUpdate} modalData={modalData} setModal={setModal} modal={modal} />
             </div>
 
 
