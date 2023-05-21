@@ -64,8 +64,8 @@ const Login = () => {
                     
                 </div>
                 <div className='text-3xl font-extrabold text-red-400  text-center my-5'>  OR Sign IN</div>
-                <div className="text-center flex justify-center">
-                    <FaGooglePlus onClick={handleLoginGoogle} className="w-8 h-8 text-lime-500" />
+                <div className="text-center flex space-x-3 justify-center">
+                    <FaGooglePlus onClick={handleLoginGoogle} className="w-8 h-8 text-lime-500 cursor-pointer" />
                     <FaFacebookF className="w-8 h-8 text-lime-500" />
                 </div>
                 <p className="my-3 ms-8 text-gray-500">New to Here <Link to='/register' className="text-indigo-600" >Register</Link></p>

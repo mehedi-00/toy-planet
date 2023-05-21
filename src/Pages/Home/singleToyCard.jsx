@@ -26,7 +26,7 @@ const singleToyCard = ({ data }) => {
             <div className="card-body ">
                 <div className="flex justify-between">
                     <h2 className="card-title">{data?.toy_name}</h2>
-                    <Rating style={{ maxWidth: 150 }} value={data?.ratting} readOnly />
+                    <Rating style={{ maxWidth: 100 }} value={data?.ratting} readOnly />
                 </div>
 
                 <p>price: ${data?.price}</p>
