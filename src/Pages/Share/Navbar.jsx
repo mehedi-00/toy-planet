@@ -32,7 +32,7 @@ const Navbar = () => {
                     {
                         user && <>
                             <li>
-                                <NavLink to='/toys' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default")}>My Toys</NavLink>
+                                <NavLink to='/my-toys' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default")}>My Toys</NavLink>
                             </li>
                             <li>
                                 <NavLink to='/addToy' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default")}> Add Toy</NavLink>
@@ -58,7 +58,7 @@ const Navbar = () => {
                         }
                     </button>
                     {/* mobile menu */}
-                    <ul className={isMenu ? 'absolute mr-5 mt-5 -r-10 p-4 shadow bg-base-100 rounded-box -left-12 w-[250px]' : 'hidden'}>
+                    <ul className={isMenu ? 'absolute z-40 mr-5 mt-5 -r-10 p-4 shadow bg-base-100 rounded-box -left-12 w-[250px]' : 'hidden'}>
                         <li className="mb-5">
                             <Link to='/' onClick={() => setMenu(false)}>Home</Link>
                         </li>
@@ -68,7 +68,7 @@ const Navbar = () => {
                         {
                             user && <>
                                 <li className="mb-5">
-                                    <Link to='/toys' onClick={() => setMenu(false)}>My Toys</Link>
+                                    <Link to='/my-toys' onClick={() => setMenu(false)}>My Toys</Link>
                                 </li>
                                 <li className="mb-5">
                                     <Link to='addToy' onClick={() => setMenu(false)}> Add Toy</Link>

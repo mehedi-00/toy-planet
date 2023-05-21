@@ -7,16 +7,9 @@ body {
     font-family: 'Oswald', sans-serif;
 }
 
-.react-tabs__tab-list {
-    @apply flex justify-center space-x-3
-}
-
-.react-tabs__tab-list {
-    border: none !important;
-}
 
 .react-tabs__tab {
-    @apply btn-primary
+    @apply btn-primary 
 }
 
 .react-tabs__tab--selected {

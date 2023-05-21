@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             { path: 'allToy', element: <AllToy />, loader: () => fetch('https://toy-planet-server.vercel.app/alltoy') },           
             {path: 'blogs',element:<Blogs/>},
             { path: 'toy/:id', element: <PrivetRoute><SingleToyDetails /></PrivetRoute>, loader: ({ params }) => fetch(`https://toy-planet-server.vercel.app/singletoy/${params.id}`) },
-            { path: '/toys', element: <PrivetRoute><MyToy /></PrivetRoute> }
+            { path: '/my-toys', element: <PrivetRoute><MyToy /></PrivetRoute> }
         ]
     },
 ]);

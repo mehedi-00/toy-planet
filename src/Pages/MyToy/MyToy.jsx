@@ -4,9 +4,10 @@ import { AuthContext } from '../../Provider/AuthProvider';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import MyModal from './MyModal';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 
 const MyToy = () => {
-    useTitle("My Toy");
+    useTitle("My Toys");
     const [toys, setToys] = useState([]);
     const [isModal, setModal] = useState(false);
     const { user } = useContext(AuthContext);
@@ -57,6 +58,7 @@ const MyToy = () => {
 
             });
     };
+    
     const handlePrice = e => {
         setSelect(e.target.value);
     };
@@ -110,7 +112,8 @@ const MyToy = () => {
 
                     </select>
                 </div>
-                <table className="table w-full">
+                <div className="overflow-x-auto">
+                <table className="table table-zebra w-full">
 
                     <thead>
                         <tr>
@@ -123,7 +126,7 @@ const MyToy = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {toys.map((toy, index) =>
+                        {toys.length === 0 ? ' dont have data please add data' : toys.map((toy, index) =>
                             <tr key={toy._id}>
                                 <th>{++index}</th>
                                 <td><img src={toy?.toy_url} className='w-12 h-8 rounded-md' alt="" /></td>
@@ -141,6 +144,7 @@ const MyToy = () => {
 
                     </tbody>
                 </table>
+                </div>
             </div>
 
             {/* <label htmlFor="my-modal" className="modal cursor-pointer"> */}

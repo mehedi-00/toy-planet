@@ -10,8 +10,8 @@ const ShopCategory = () => {
     const tabData = [
         { id: 1, title: 'Cricket', content: toys },
         { id: 2, title: 'Football', content: toys },
-        { id: 3, title: 'Badminton', content: toys },
-        { id: 4, title: 'BasketBall', content: toys },
+        { id: 3, title: 'Badminton', content: toys }
+        
     ];
     useEffect(() => {
         fetchData(activeTab);
@@ -33,9 +33,9 @@ const ShopCategory = () => {
         <div className='md:mx-20 md:my-32 my-12'>
 
             <Tabs className='mt-20'>
-                <TabList >
+                <TabList className='flex justify-center space-x-3' >
                     {
-                        tabData.map(tab => <Tab key={tab.id} onClick={() => handleCatagery(tab.title)} > {tab.title} </Tab>)
+                        tabData.map(tab => <Tab key={tab.id} onClick={() =>  handleCatagery(tab.title)}  > {tab.title} </Tab>)
                     }
 
                 </TabList>

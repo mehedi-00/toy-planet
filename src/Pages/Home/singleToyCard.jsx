@@ -21,7 +21,7 @@ const singleToyCard = ({ data }) => {
     };
 
     return (
-        <div className="card mx-8 md:mx-0   glass bg-gradient-to-b duration-500 pt-5 from-red-200 to-red-500 hover:bg-gradient-to-t hover:from-red-200 hover:to-red-500 ">
+        <div className="card mx-8 md:mx-0   glass  duration-500 pt-5 bg-gradient-to-b from-[#eeaeca] to-[#94bbe9] hover:bg-gradient-to-t hover:from-[#94bbe9] hover:to-[#eeaeca]  ">
             <figure><img className='h-[150px] md:h-[300px] w-10/12 rounded-lg' src={data?.toy_url} alt="car!" /></figure>
             <div className="card-body ">
                 <div className="flex justify-between">

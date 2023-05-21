@@ -6,8 +6,8 @@ const Banner = () => {
             <div className=" w-[90vw] md:w-2/4 md:mr-10">
                     <h2 className="text-2xl text-center md:text-justify font-medium mt-5 md:mt-0">Welcome to <span className="text-3xl font-extrabold text-rose-700">Toy Planet</span></h2>
                     <p className="text-base my-3 text-center md:text-justify md:my-10 text-slate-700">your ultimate destination for a world of fun and imagination! Explore our vast collection of toys, designed to bring joy to kids of all ages. From classic favorites to the latest trends, we have something for every little adventurer, dreamer, and creator.<span className="hidden "> Discover a treasure trove of playthings that spark curiosity, foster creativity, and ignite endless hours of laughter and excitement.  With our carefully curated selection, exceptional quality, and unbeatable prices, Toys Galore is the go-to destination for all your toy needs</span></p>
-                    <div>
-                        <div className=" px-4 md:px-8 md:py-5 py-3  btn-primary inline-block ">Explore More</div>
+                    <div className="md:text-start text-center my-5  " >
+                        <button className=" px-4 md:px-8 md:py-5 py-3  btn-primary  ">Explore More</button>
                     </div>
             </div>
 

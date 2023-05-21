@@ -13,7 +13,7 @@ const AddToy = () => {
         setSelectVaue(e.target.value);
     };
     const onSubmit = data => {
-        data.usebCategory = selectValue;
+        data.subcategory = selectValue;
         fetch('https://toy-planet-server.vercel.app/addtoy', {
             method: "POST",
             headers: {
