@@ -36,8 +36,8 @@ const singleToyCard = ({ data }) => {
     };
 
     return (
-        <div className="card  glass bg-gradient-to-b transition-[0.7s] pt-5 from-red-200 to-red-500 hover:bg-gradient-to-t hover:from-red-200 hover:to-red-500 ">
-            <figure><img className='h-[300px] w-10/12 rounded-lg' src={data?.toy_url} alt="car!" /></figure>
+        <div className="card mx-8 md:mx-0   glass bg-gradient-to-b duration-500 pt-5 from-red-200 to-red-500 hover:bg-gradient-to-t hover:from-red-200 hover:to-red-500 ">
+            <figure><img className='h-[150px] md:h-[300px] w-10/12 rounded-lg' src={data?.toy_url} alt="car!" /></figure>
             <div className="card-body ">
                 <div className="flex justify-between">
                     <h2 className="card-title">{data?.toy_name}</h2>
@@ -46,7 +46,7 @@ const singleToyCard = ({ data }) => {
 
                 <p>price: ${data?.price}</p>
                 <div className="card-actions justify-start">
-                    {/* <Link to={`/toy/${data._id}`} className="btn btn-primary">Vew Details</Link> */}
+                    
                     <Link to={`/toy/${data._id}`} className="btn btn-primary"> <button onClick={handleDetails}>Vew Details</button></Link>
                 </div>
             </div>

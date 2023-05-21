@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body{
+    font-family: 'Oswald', sans-serif;
+}
 .react-tabs__tab-list{
     @apply flex justify-center space-x-3 
 }
@@ -22,3 +26,24 @@
 .noModal{
     @apply translate-x-2 hidden duration-500
 }
+         
+    .btn-grad {
+       background-image: linear-gradient(to right, #c21500 0%, #ffc500  51%, #c21500  100%);
+       margin: 10px;
+       padding: 15px 45px;
+       text-align: center;
+       text-transform: uppercase;
+       transition: 0.5s;
+       background-size: 200% auto;
+       color: white;            
+       box-shadow: 0 0 20px #eee;
+       border-radius: 10px;
+       display: block;
+     }
+
+     .btn-grad:hover {
+       background-position: right center; /* change the direction of the change here */
+       color: #fff;
+       text-decoration: none;
+     }
+    

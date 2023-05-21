@@ -1,10 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from '../../assets/icon/logo.png';
 import { AuthContext } from "../../Provider/AuthProvider";
-const Navbar = () => {
-    const { user, logout } = useContext(AuthContext);
+import { FaBars, FaTimes } from "react-icons/fa";
 
+
+const Navbar = () => {
+    const [isMenu, setMenu] = useState(false);
+    const { user, logout } = useContext(AuthContext);
+    const handleMenu = () => {
+        setMenu(!isMenu);
+    };
     return (
 
         <div className="navbar bg-base-100 md:px-20 py-5">
@@ -12,11 +18,11 @@ const Navbar = () => {
                 <Link to='/'>
                     <img src={logo} alt="" />
                 </Link>
-                <span className="text-lg text-stone-950 tracking-[0.3em] font-bold">PLANET</span>
+                <span className=" hidden md:block text-lg text-stone-950 tracking-[0.3em] font-bold">PLANET</span>
 
             </div>
             <div className="navbar-center">
-                <ul className="md:flex space-x-3 hidden">
+                <ul className="md:flex space-x-4  hidden tracking-wider">
                     <li>
                         <Link>Home</Link>
                     </li>
@@ -44,14 +50,36 @@ const Navbar = () => {
             <div className="navbar-end">
 
 
-                <div className="dropdown md:hidden block">
-                    <label tabIndex={0} className="btn btn-ghost btn-circle">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <li><a>Homepage</a></li>
-                        <li><a>Portfolio</a></li>
-                        <li><a>About</a></li>
+                <div className="dropdown md:hidden block mr-2">
+
+                    <button onClick={handleMenu}>
+                        {isMenu ? <FaTimes className="w-5 h-5 text-zinc-900" /> :
+                            <FaBars className="w-5 h-5 text-zinc-900" />
+                        }
+                    </button>
+
+                    <ul className={isMenu ? 'absolute mr-5 mt-5 p-4 shadow bg-base-100 rounded-box w-52' : 'hidden'}>
+                        <li className="mb-5">
+                            <Link>Home</Link>
+                        </li>
+                        <li className="mb-5">
+                            <Link to='/allToy'>All Toys</Link>
+                        </li>
+                        {
+                            user && <>
+                                <li className="mb-5">
+                                    <Link to='/toys'>My Toys</Link>
+                                </li>
+                                <li className="mb-5">
+                                    <Link to='addToy'> Add Toy</Link>
+                                </li>
+
+                            </>
+                        }
+                        <li>
+                            <Link>Blogs</Link>
+                        </li>
+
                     </ul>
                 </div>
                 {user ?
@@ -75,7 +103,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     :
-                    <Link to='/login'>Login</Link>
+                    <Link to='/login' onClick={() => setMenu(false)} className="btn btn-success text-lime-100 tracking-widest">Login</Link>
                 }
             </div>
         </div>

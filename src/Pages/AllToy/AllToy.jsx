@@ -1,22 +1,53 @@
-import { useState } from 'react';
-import { useLoaderData } from "react-router-dom";
-
+import { useContext, useState } from 'react';
+import { Link, useLoaderData } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 const AllToy = () => {
     const [toys, setToys] = useState(useLoaderData());
-    
-    
+    const { user } = useContext(AuthContext);
+    useTitle("All Toys")
+
     const handleToySearch = e => {
         e.preventDefault();
         const form = e.target;
         const toy_name = form.toy_name.value;
-        console.log(toy_name);
-        fetch(`http://localhost:5000/toy/${toy_name}`)
+
+        fetch(`http://localhost:5000/toysearch/${toy_name}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data);
                 form.reset();
             });
 
+    };
+
+    const handleDetails = () => {
+        if (!user) {
+            let timerInterval;
+            Swal.fire({
+                title: 'please Login first!',
+                html: 'I will close in <b></b> milliseconds.',
+                timer: 500,
+                timerProgressBar: true,
+                didOpen: () => {
+                    Swal.showLoading();
+                    const b = Swal.getHtmlContainer().querySelector('b');
+                    timerInterval = setInterval(() => {
+                        b.textContent = Swal.getTimerLeft();
+                    }, 10);
+                },
+                willClose: () => {
+                    clearInterval(timerInterval);
+                }
+            }).then((result) => {
+                /* Read more about handling dismissals below */
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer');
+                }
+            });
+        }
     };
 
 
@@ -30,28 +61,27 @@ const AllToy = () => {
              rounded-md btn-success">Search</button>
                     </form>
                 </div>
-                <table className="table w-full">
-                    {/* head */}
-                    <thead>
+                <table className="table  table-zebra w-full border border-gray-400 text-center">
+                    <thead className='border-b-2 border-red-900'>
                         <tr>
-                            <th>SL</th>
-                            <th>Seller Name</th>
-                            <th>Toy Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Action</th>
+                            <th className='md:text-2xl'>SL</th>
+                            <th className='md:text-2xl'>Seller Name</th>
+                            <th className='md:text-2xl'>Toy Name</th>
+                            <th className='md:text-2xl'>Price</th>
+                            <th className='md:text-2xl'>Quantity</th>
+                            <th className='md:text-2xl'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         {toys.length === 0 ? 'No data this name' : toys.slice(0, 20).map((toy, index) =>
-                            <tr key={toy._id}>
-                                <th>{++index}</th>
-                                <td>{toy.seller_name ? toy.seller_name : 'no name'}</td>
-                                <td>{toy?.toy_name}</td>
-                                <td>{toy?.price}</td>
-                                <td>{toy.quantity}</td>
+                            <tr key={toy._id} className={index %2 === 0? '': 'active'}  >
+                                <th >{++index}</th>
+                                <td >{toy.seller_name ? toy.seller_name : 'no name'}</td>
+                                <td >{toy?.toy_name}</td>
+                                <td >{toy?.price}</td>
+                                <td >{toy.quantity}</td>
                                 <td>
-                                    <button className='btn btn-secondary'> view details </button>
+                                    <Link to={`/toy/${toy._id}`} >  <button onClick={handleDetails} className='btn '> <FaEye className='w-5 h-5 text-white' /> </button></Link>
                                 </td>
                             </tr>
                         )}

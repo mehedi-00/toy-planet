@@ -30,7 +30,7 @@ const ShopCategory = () => {
         setActiveTab(category);
     };
     return (
-        <div className='md:mx-20 my-32'>
+        <div className='md:mx-20 md:my-32 my-12'>
 
             <Tabs className='mt-20'>
                 <TabList >
@@ -41,7 +41,7 @@ const ShopCategory = () => {
                 </TabList>
                 {
                 tabData.map(tab => <TabPanel key={tab.id}>
-                    <div className="grid md:grid-cols-3 md:mt-10 md:gap-8 ">
+                    <div className="grid md:grid-cols-3  md:mt-10 gap-6 md:gap-8 mt-8  ">
                         {
                             tab.content.map(toy =>
                                 <SingleToyCard  key={toy._id} data={toy} />
