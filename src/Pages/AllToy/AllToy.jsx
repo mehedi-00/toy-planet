@@ -4,24 +4,31 @@ import { FaEye } from "react-icons/fa";
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
 import useTitle from '../../hooks/useTitle';
+import Loader from '../Share/Loader';
 const AllToy = () => {
+   
+    const {loading,setLoading} = useContext(AuthContext)
     const [toys, setToys] = useState(useLoaderData());
     const { user } = useContext(AuthContext);
-    useTitle("All Toys")
+    useTitle("All Toy")
 
     const handleToySearch = e => {
         e.preventDefault();
         const form = e.target;
         const toy_name = form.toy_name.value;
-
-        fetch(`http://localhost:5000/toysearch/${toy_name}`)
+        setLoading(true)
+        fetch(`https://toy-planet-server.vercel.app/toysearch/${toy_name}`)
             .then(res => res.json())
             .then(data => {
                 setToys(data);
                 form.reset();
+                setLoading(false)
             });
 
     };
+    if(loading){
+        return <Loader/>
+    }
 
     const handleDetails = () => {
         if(!user){
@@ -36,7 +43,7 @@ const AllToy = () => {
 
 
     return (
-        <div className='md:mx-20 mx-5'>
+        <div className=' mx-5'>
 
             <div className=" mt-10">
                 <div className='my-3 '>
@@ -58,7 +65,7 @@ const AllToy = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {toys.length === 0 ? 'No data this name' : toys.slice(0, 20).map((toy, index) =>
+                        {toys.length === 0 ? 'No data this name' : toys.map((toy, index) =>
                             <tr key={toy._id} className={index %2 === 0? '': 'active'}  >
                                 <th >{++index}</th>
                                 <td >{toy.seller_name ? toy.seller_name : 'no name'}</td>

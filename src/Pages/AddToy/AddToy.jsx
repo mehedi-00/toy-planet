@@ -2,7 +2,10 @@ import { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2'
+import Loader from '../Share/Loader';
+import useTitle from '../../hooks/useTitle';
 const AddToy = () => {
+    useTitle("Add Toy");
     const { user, loading } = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [selectValue, setSelectVaue] = useState('');
@@ -11,7 +14,7 @@ const AddToy = () => {
     };
     const onSubmit = data => {
         data.usebCategory = selectValue;
-        fetch('http://localhost:5000/addtoy', {
+        fetch('https://toy-planet-server.vercel.app/addtoy', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'
@@ -35,11 +38,11 @@ const AddToy = () => {
         console.log(data);
     };
     if (loading) {
-        return 'loading....';
+        return <Loader/>;
     }
     return (
-        <div className=' my-20 mx-20'>
-            <div className='w-2/4 mx-auto'>
+        <div className=' my-20 mx-5 border border-slate-500 md:border-none shadow-lg shadow-slate-300 p-2 py-5'>
+            <div className='md:w-2/4 mx-auto'>
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div className="grid md:grid-cols-2 md:gap-6">
@@ -55,12 +58,12 @@ const AddToy = () => {
                     <div className="grid md:grid-cols-2 md:gap-6">
 
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="text" id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("toy_name")} />
+                            <input type="text" id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("toy_name")}  required/>
                             <label htmlFor="toy_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Toy Name</label>
 
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
-                            <select value={selectValue} onChange={handleSelect} className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+                            <select value={selectValue} onChange={handleSelect} className='block py-2.5 px-0 w-10/12 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer' required>
                                 <option value="">Select an option</option>
                                 <option value="Cricket">Cricket</option>
                                 <option value="Football">Football</option>
@@ -74,12 +77,12 @@ const AddToy = () => {
                     <div className="grid md:grid-cols-2 md:gap-6">
 
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="text" id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("price")} />
+                            <input type="text" id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("price")} required/>
                             <label htmlFor="toy_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Price</label>
 
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="text" id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("quantity")} />
+                            <input type="text" id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("quantity")} required/>
                             <label htmlFor="toy_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Available quantity</label>
 
                         </div>
@@ -89,13 +92,13 @@ const AddToy = () => {
                     <div className="grid md:grid-cols-2 md:gap-6">
 
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="number" max={5} min={1} id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("ratting")} />
+                            <input type="text"  id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("ratting")}  required/>
                             <label htmlFor="toy_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Ratting</label>
 
                         </div>
                         <div className="relative z-0 w-full mb-6 group">
-                            <input type="text" id="toy_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("toy_url")} />
-                            <label htmlFor="toy_name" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Picture URL of the toy</label>
+                            <input type="text" id="toy_url" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" "  {...register("toy_url")} required />
+                            <label htmlFor="toy_url" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Picture URL of the toy</label>
 
                         </div>
 

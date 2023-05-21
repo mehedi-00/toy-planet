@@ -6,13 +6,14 @@ import MyModal from './MyModal';
 import Swal from 'sweetalert2';
 
 const MyToy = () => {
+    useTitle("My Toy");
     const [toys, setToys] = useState([]);
     const [isModal, setModal] = useState(false);
     const { user } = useContext(AuthContext);
     const [modalData, setModalData] = useState({});
     const [select, setSelect] = useState('');
     useEffect(() => {
-        fetch(`http://localhost:5000/toys?email=${user?.email}&order=${select}`)
+        fetch(`https://toy-planet-server.vercel.app/toys?email=${user?.email}&order=${select}`)
             .then(res => res.json())
             .then(data => setToys(data));
     }, [user, select]);
@@ -26,7 +27,7 @@ const MyToy = () => {
         const description = form.description.value;
         const updateData = { price, quantity, description };
 
-        fetch(`http://localhost:5000/toyUpdate/${id}`, {
+        fetch(`https://toy-planet-server.vercel.app/toyUpdate/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -75,7 +76,7 @@ const MyToy = () => {
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/toyDelete/${id}`, {
+                    fetch(`https://toy-planet-server.vercel.app/toyDelete/${id}`, {
                         method: "DELETE"
                     })
                         .then(res => res.json())

@@ -19,7 +19,7 @@ const ShopCategory = () => {
     }, [activeTab]);
     const fetchData = async (category) => {
         try {
-            const response = await fetch(`http://localhost:5000/toy/${category}`);
+            const response = await fetch(`https://toy-planet-server.vercel.app/toy/${category}`);
             const data = await response.json();
             setToys(data);
         } catch (error) {

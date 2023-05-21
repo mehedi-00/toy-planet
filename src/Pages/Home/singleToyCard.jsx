@@ -4,11 +4,10 @@ import { Rating } from '@smastrom/react-rating';
 import { AuthContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import useTitle from "../../hooks/useTitle";
 
 const singleToyCard = ({ data }) => {
     const { user } = useContext(AuthContext);
-    useTitle("toy details")
+    
 
     const handleDetails = () => {
         if(!user){

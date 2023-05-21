@@ -12,7 +12,7 @@ const TopRatedToy = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://localhost:5000/top-rated-toy/')
+        fetch('https://toy-planet-server.vercel.app/top-rated-toy/')
             .then(res => res.json())
             .then(data => {
                 setToys(data);

@@ -3,31 +3,43 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
+body {
     font-family: 'Oswald', sans-serif;
 }
-.react-tabs__tab-list{
-    @apply flex justify-center space-x-3 
+
+.react-tabs__tab-list {
+    @apply flex justify-center space-x-3
 }
+
 .react-tabs__tab-list {
     border: none !important;
 }
+
 .react-tabs__tab {
-    @apply btn-primary 
+    @apply btn-primary
 }
 
 .react-tabs__tab--selected {
     color: white !important;
     background: #480825 !important;
 }
-.mymodal{
-    @apply fixed w-screen h-screen mx-auto  inset-0  z-50 bg-black bg-opacity-[0.3] flex justify-center items-center translate-x-1 transition-all duration-500
+
+.mymodal {
+    @apply fixed w-screen h-screen mx-auto inset-0 z-50 bg-black bg-opacity-[0.3] flex justify-center items-center translate-x-1 transition-all duration-500
 }
-.noModal{
+
+.noModal {
     @apply translate-x-2 hidden duration-500
 }
-         
-    .btn-primary{
-        @apply px-6 py-2 font-semibold text-white bg-green-500 border-l-4 border-green-800 rounded shadow-lg shadow-green-600/50 hover:border-green-600 
-    }
-    
+
+.btn-primary {
+    @apply  font-semibold text-white bg-green-500 border-l-4 border-green-800 rounded shadow-lg shadow-green-600/50 hover:border-green-600
+}
+
+.navActive {
+    @apply  text-lg text-red-900 font-bold
+}
+
+.default {
+    @apply  text-lg text-slate-900
+}

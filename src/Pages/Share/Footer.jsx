@@ -5,7 +5,7 @@ import { FaFacebookSquare, FaYoutubeSquare, FaTwitter, FaDribbbleSquare, FaPhone
 const Footer = () => {
     return (
         <>
-        <footer className=" p-10 bg-slate-300 text-base-content mt-28 shadow-md  grid grid-cols-2  md:grid-cols-4 md:gap-8 gap-5   justify-items-center ">
+        <footer className="max-w-screen-xl mx-auto p-10 bg-slate-300 text-base-content mt-20 md:mt-28 shadow-md  grid grid-cols-2  md:grid-cols-4 md:gap-8 gap-5   justify-items-center ">
             <div>
                 <Link to='/'>
                     <img src={logo} alt="" />
@@ -44,7 +44,7 @@ const Footer = () => {
 
             
         </footer>
-        <div className='text-center text-white bg-gray-950 py-5 mb-10'>
+        <div className='max-w-screen-xl mx-auto text-center text-white bg-gray-950 py-10 mb-10'>
         <p className='text-base-100 font-mono'>Copyright © 2023 - All right reserved</p>
         </div>
         </>

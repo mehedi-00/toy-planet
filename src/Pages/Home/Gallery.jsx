@@ -19,13 +19,13 @@ const Gallery = () => {
                     <div className="border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="300">
                         <img className="rounded-xl h-[300px]" src="https://i.ytimg.com/vi/XPEDaF3-b-U/maxresdefault.jpg" alt="" />
                     </div>
-                    <div className="border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="300">
+                    <div className="border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="200">
                         <img className="rounded-xl h-[300px]" src="https://m.media-amazon.com/images/I/71llwjfgshL.jpg    " alt="" />
                     </div>
-                    <div className="border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="700">
+                    <div className="border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="300">
                         <img className="rounded-xl h-[300px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkt37Q6bOLXpaxQiqaJl9O3-oRMNLqsKIZfg&usqp=CAU" alt="" />
                     </div>
-                    <div className="hidden md:block border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="800">
+                    <div className="hidden md:block border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="100">
                         <img className="rounded-xl h-[300px]" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEagYU-BoN4JqpMkAwgRi_MO8-bTGLZtiZkA&usqp=CAU" alt="" />
                     </div>
                     <div className="hidden md:block border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="300">
@@ -36,7 +36,7 @@ const Gallery = () => {
 
                 </div>
                 <div className='grid grid-rows-2'>
-                <div className="hidden md:block border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="600">
+                <div className="hidden md:block border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="400">
                         <img className="rounded-xl h-[300px] w-full" src="https://images-na.ssl-images-amazon.com/images/I/61ER80iH5OL.jpg" alt="" />
                     </div>
                     <div className=" hidden md:block border-4 rounded-xl border-emerald-900 " data-aos="zoom-in" data-aos-delay="200">

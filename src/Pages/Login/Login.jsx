@@ -7,7 +7,7 @@ import useTitle from "../../hooks/useTitle";
 const Login = () => {
     useTitle("Login")
     const [error, setError] = useState('');
-    const { loginWithEmailAndPassword } = useContext(AuthContext);
+    const { loginWithEmailAndPassword ,loginWithGoogle,setLoading} = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -18,7 +18,7 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        
         loginWithEmailAndPassword(email, password)
             .then(res => {
                 const loggedUser = res.user;
@@ -30,8 +30,20 @@ const Login = () => {
                 setError(err.message);
             });
     };
+    const handleLoginGoogle = () => {
+        loginWithGoogle()
+            .then(res => {
+                const loggedUser = res.user;
+                console.log(loggedUser);
+                navigate(from, { replace: true });
+            })
+            .catch(err => {
+                setLoading(false);
+                setError(err.message);
+            });
+    };
     return (
-        <div className='flex mt-20 md:mx-20 ms-5 justify-evenly items-center'>
+        <div className='flex mt-20  ms-5 justify-evenly items-center'>
 
             <div className='w-full md:w-5/12 mr-10  shadow-black shadow-lg py-3 px-2'>
                 <h2 className='text-center text-2xl'>Please Login</h2>
@@ -53,11 +65,12 @@ const Login = () => {
                 </div>
                 <div className='text-3xl font-extrabold text-red-400  text-center my-5'>  OR Sign IN</div>
                 <div className="text-center flex justify-center">
-                    <FaGooglePlus className="w-8 h-8 text-lime-500" />
+                    <FaGooglePlus onClick={handleLoginGoogle} className="w-8 h-8 text-lime-500" />
                     <FaFacebookF className="w-8 h-8 text-lime-500" />
                 </div>
-                <p className="my-3 text-gray-500">New to Here <Link to='/register' className="text-indigo-600" >Register</Link></p>
+                <p className="my-3 ms-8 text-gray-500">New to Here <Link to='/register' className="text-indigo-600" >Register</Link></p>
             </div>
+            
             <div className='hidden md:block md:w-7/12'>
                 <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-2578971-2147152.png" alt="" />
             </div>

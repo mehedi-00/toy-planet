@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/icon/logo.png';
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaBars, FaTimes } from "react-icons/fa";
@@ -13,7 +13,7 @@ const Navbar = () => {
     };
     return (
 
-        <div className="navbar bg-base-100 md:px-20 py-5">
+        <div className="navbar bg-base-100  py-5 max-w-screen-xl mx-auto">
             <div className="navbar-start flex space-x-4">
                 <Link to='/'>
                     <img src={logo} alt="" />
@@ -22,26 +22,26 @@ const Navbar = () => {
 
             </div>
             <div className="navbar-center">
-                <ul className="md:flex space-x-4  hidden tracking-wider">
+                <ul className="md:flex space-x-4  hidden ">
                     <li>
-                        <Link to='/' onClick={() => setMenu(false)}>Home</Link>
+                        <NavLink to='/' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default")} >Home</NavLink>
                     </li>
                     <li>
-                        <Link to='/allToy' onClick={() => setMenu(false)}>All Toys</Link>
+                        <NavLink to='/allToy' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default")}>All Toys</NavLink>
                     </li>
                     {
                         user && <>
                             <li>
-                                <Link to='/toys' onClick={() => setMenu(false)}>My Toys</Link>
+                                <NavLink to='/toys' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default")}>My Toys</NavLink>
                             </li>
                             <li>
-                                <Link to='/addToy' onClick={() => setMenu(false)}> Add Toy</Link>
+                                <NavLink to='/addToy' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default")}> Add Toy</NavLink>
                             </li>
 
                         </>
                     }
                     <li>
-                        <Link to='/blogs' onClick={() => setMenu(false)}>Blogs</Link>
+                        <NavLink to='/blogs' onClick={() => setMenu(false)} className={({ isActive }) => (isActive ? "navActive" : "default ")}>Blogs</NavLink>
                     </li>
 
                 </ul>
@@ -57,8 +57,8 @@ const Navbar = () => {
                             <FaBars className="w-5 h-5 text-zinc-900" />
                         }
                     </button>
-
-                    <ul className={isMenu ? 'absolute mr-5 mt-5 p-4 shadow bg-base-100 rounded-box w-52' : 'hidden'}>
+                    {/* mobile menu */}
+                    <ul className={isMenu ? 'absolute mr-5 mt-5 -r-10 p-4 shadow bg-base-100 rounded-box -left-12 w-[250px]' : 'hidden'}>
                         <li className="mb-5">
                             <Link to='/' onClick={() => setMenu(false)}>Home</Link>
                         </li>
@@ -85,17 +85,16 @@ const Navbar = () => {
                 {user ?
                     <div className="dropdown dropdown-end">
 
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar" title={user?.name? user?.name : 'user'}>
                             <div className="w-10 rounded-full">
 
-                                <img src="https://static.vecteezy.com/system/resources/thumbnails/002/002/403/small/man-with-beard-avatar-character-isolated-icon-free-vector.jpg" />
+                                <img src={user?.photoURL? user?.photoURL: 'https://w7.pngwing.com/pngs/340/946/png-transparent-avatar-user-computer-icons-software-developer-avatar-child-face-heroes-thumbnail.png'} />
                             </div>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
                                 <a className="justify-between">
                                     Profile
-                                    <span className="badge">New</span>
                                 </a>
                             </li>
                             <li><a>Settings</a></li>
@@ -103,7 +102,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     :
-                    <Link to='/login' onClick={() => setMenu(false)} className="btn-primary">Login</Link>
+                    <Link to='/login' onClick={() => setMenu(false)} className="btn-primary px-5 py-2">Login</Link>
                 }
             </div>
         </div>
