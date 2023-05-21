@@ -12,6 +12,7 @@ import PrivetRoute from "./PrivetRoute";
 import SingleToyDetails from "../Pages/SingleToy/SingleToyDetails";
 import MyToy from "../Pages/MyToy/MyToy";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
     {
@@ -23,7 +24,8 @@ const router = createBrowserRouter([
             { path: 'login', element: <Login /> },
             { path: 'register', element: <Register /> },
             { path: 'addToy', element: <PrivetRoute><AddToy /></PrivetRoute> },
-            { path: 'allToy', element: <AllToy />, loader: () => fetch('http://localhost:5000/alltoy') },
+            { path: 'allToy', element: <AllToy />, loader: () => fetch('http://localhost:5000/alltoy') },           
+            {path: 'blogs',element:<Blogs/>},
             { path: 'toy/:id', element: <PrivetRoute><SingleToyDetails /></PrivetRoute>, loader: ({ params }) => fetch(`http://localhost:5000/singletoy/${params.id}`) },
             { path: '/toys', element: <PrivetRoute><MyToy /></PrivetRoute> }
         ]
