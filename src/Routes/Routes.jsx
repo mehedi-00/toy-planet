@@ -11,11 +11,13 @@ import AllToy from "../Pages/AllToy/AllToy";
 import PrivetRoute from "./PrivetRoute";
 import SingleToyDetails from "../Pages/SingleToy/SingleToyDetails";
 import MyToy from "../Pages/MyToy/MyToy";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main />,
+        errorElement: <ErrorPage/>,
         children: [
             { path: '/', element: <Home /> },
             { path: 'login', element: <Login /> },

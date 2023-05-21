@@ -5,8 +5,10 @@ import { FaGooglePlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import useTitle from '../../hooks/useTitle';
 
 const Register = () => {
+    useTitle("Register")
     const [error, setError] = useState('');
     const { createUser } = useContext(AuthContext);
     const handleLogin = (e) => {

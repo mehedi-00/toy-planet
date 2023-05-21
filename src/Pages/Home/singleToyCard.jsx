@@ -1,37 +1,23 @@
 
 import { useContext } from "react";
 import { Rating } from '@smastrom/react-rating';
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../hooks/useTitle";
 
 const singleToyCard = ({ data }) => {
     const { user } = useContext(AuthContext);
+    useTitle("toy details")
 
     const handleDetails = () => {
-        if (!user) {
-            let timerInterval;
+        if(!user){
             Swal.fire({
                 title: 'please Login first!',
-                html: 'I will close in <b></b> milliseconds.',
-                timer: 500,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading();
-                    const b = Swal.getHtmlContainer().querySelector('b');
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft();
-                    }, 10);
-                },
-                willClose: () => {
-                    clearInterval(timerInterval);
-                }
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer');
-                }
-            });
+                
+                timer: 600,
+            }
+            )
         }
     };
 

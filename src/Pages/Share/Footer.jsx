@@ -1,6 +1,7 @@
 import logo from '../../assets/icon/logo.png';
 import { Link } from 'react-router-dom';
 import { FaFacebookSquare, FaYoutubeSquare, FaTwitter, FaDribbbleSquare, FaPhoneAlt, FaMailBulk, FaMapMarkerAlt } from "react-icons/fa";
+
 const Footer = () => {
     return (
         <>

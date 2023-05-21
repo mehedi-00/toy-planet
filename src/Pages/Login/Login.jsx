@@ -1,9 +1,11 @@
 
 import { useContext, useState } from "react";
-import { FaGooglePlus } from "react-icons/fa";
+import { FaGooglePlus,FaFacebookF } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useTitle from "../../hooks/useTitle";
 const Login = () => {
+    useTitle("Login")
     const [error, setError] = useState('');
     const { loginWithEmailAndPassword } = useContext(AuthContext);
     const location = useLocation();
@@ -29,9 +31,9 @@ const Login = () => {
             });
     };
     return (
-        <div className='flex mt-20 mx-20 justify-evenly items-center'>
+        <div className='flex mt-20 md:mx-20 ms-5 justify-evenly items-center'>
 
-            <div className='md:w-5/12 mr-10  shadow-black shadow-lg py-3 px-2'>
+            <div className='w-full md:w-5/12 mr-10  shadow-black shadow-lg py-3 px-2'>
                 <h2 className='text-center text-2xl'>Please Login</h2>
                 <p className='my-3 text-red-500 ms-8'>{error} </p>
                 <div className="px-10 mt-5">
@@ -47,14 +49,16 @@ const Login = () => {
 
                         <button type="submit" className=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
                     </form>
-                    <p className="my-3 text-gray-500">New to Here <Link to='/register' className="text-indigo-600" >Register</Link></p>
+                    
                 </div>
-                <div className='text-3xl font-extrabold text-red-400  text-center my-5'>  OR</div>
-                <div className="text-center ">
+                <div className='text-3xl font-extrabold text-red-400  text-center my-5'>  OR Sign IN</div>
+                <div className="text-center flex justify-center">
                     <FaGooglePlus className="w-8 h-8 text-lime-500" />
+                    <FaFacebookF className="w-8 h-8 text-lime-500" />
                 </div>
+                <p className="my-3 text-gray-500">New to Here <Link to='/register' className="text-indigo-600" >Register</Link></p>
             </div>
-            <div className='md:w-7/12'>
+            <div className='hidden md:block md:w-7/12'>
                 <img src="https://cdni.iconscout.com/illustration/premium/thumb/login-page-2578971-2147152.png" alt="" />
             </div>
         </div>

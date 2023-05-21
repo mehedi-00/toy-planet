@@ -24,24 +24,24 @@ const Navbar = () => {
             <div className="navbar-center">
                 <ul className="md:flex space-x-4  hidden tracking-wider">
                     <li>
-                        <Link>Home</Link>
+                        <Link to='/' onClick={() => setMenu(false)}>Home</Link>
                     </li>
                     <li>
-                        <Link to='/allToy'>All Toys</Link>
+                        <Link to='/allToy' onClick={() => setMenu(false)}>All Toys</Link>
                     </li>
                     {
                         user && <>
                             <li>
-                                <Link to='/toys'>My Toys</Link>
+                                <Link to='/toys' onClick={() => setMenu(false)}>My Toys</Link>
                             </li>
                             <li>
-                                <Link to='addToy'> Add Toy</Link>
+                                <Link to='/addToy' onClick={() => setMenu(false)}> Add Toy</Link>
                             </li>
 
                         </>
                     }
                     <li>
-                        <Link>Blogs</Link>
+                        <Link to='/blogs' onClick={() => setMenu(false)}>Blogs</Link>
                     </li>
 
                 </ul>
@@ -60,24 +60,24 @@ const Navbar = () => {
 
                     <ul className={isMenu ? 'absolute mr-5 mt-5 p-4 shadow bg-base-100 rounded-box w-52' : 'hidden'}>
                         <li className="mb-5">
-                            <Link>Home</Link>
+                            <Link to='/' onClick={() => setMenu(false)}>Home</Link>
                         </li>
                         <li className="mb-5">
-                            <Link to='/allToy'>All Toys</Link>
+                            <Link to='/allToy' onClick={() => setMenu(false)}>All Toys</Link>
                         </li>
                         {
                             user && <>
                                 <li className="mb-5">
-                                    <Link to='/toys'>My Toys</Link>
+                                    <Link to='/toys' onClick={() => setMenu(false)}>My Toys</Link>
                                 </li>
                                 <li className="mb-5">
-                                    <Link to='addToy'> Add Toy</Link>
+                                    <Link to='addToy' onClick={() => setMenu(false)}> Add Toy</Link>
                                 </li>
 
                             </>
                         }
                         <li>
-                            <Link>Blogs</Link>
+                            <Link to='/blogs' onClick={() => setMenu(false)}>Blogs</Link>
                         </li>
 
                     </ul>
@@ -103,7 +103,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     :
-                    <Link to='/login' onClick={() => setMenu(false)} className="btn btn-success text-lime-100 tracking-widest">Login</Link>
+                    <Link to='/login' onClick={() => setMenu(false)} className="btn-primary">Login</Link>
                 }
             </div>
         </div>

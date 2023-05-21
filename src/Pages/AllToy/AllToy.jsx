@@ -24,29 +24,13 @@ const AllToy = () => {
     };
 
     const handleDetails = () => {
-        if (!user) {
-            let timerInterval;
+        if(!user){
             Swal.fire({
                 title: 'please Login first!',
-                html: 'I will close in <b></b> milliseconds.',
-                timer: 500,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading();
-                    const b = Swal.getHtmlContainer().querySelector('b');
-                    timerInterval = setInterval(() => {
-                        b.textContent = Swal.getTimerLeft();
-                    }, 10);
-                },
-                willClose: () => {
-                    clearInterval(timerInterval);
-                }
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer');
-                }
-            });
+                
+                timer: 600,
+            }
+            )
         }
     };
 
@@ -57,10 +41,11 @@ const AllToy = () => {
             <div className=" mt-10">
                 <div className='my-3 '>
                     <form onSubmit={handleToySearch}>
-                        <input type="text" name='toy_name' placeholder="Search by Toy Name" className="input input-bordered input-primary w-full max-w-xs h-10 border-r-0 rounded-e-[0] focus:border-0 focus:h-10" required /><button className="h-10 px-5 rounded-s-[0] 
+                        <input type="text" name='toy_name' placeholder="Search by Toy Name" className="input input-bordered input-primary w-[250px] md:w-full max-w-xs h-10 border-r-0 rounded-e-[0] focus:border-0 focus:h-10" required /><button className="h-10 px-5 rounded-s-[0] 
              rounded-md btn-success">Search</button>
                     </form>
                 </div>
+                <div className="overflow-x-auto">
                 <table className="table  table-zebra w-full border border-gray-400 text-center">
                     <thead className='border-b-2 border-red-900'>
                         <tr>
@@ -89,6 +74,7 @@ const AllToy = () => {
 
                     </tbody>
                 </table>
+                </div>
             </div>
 
         </div>
